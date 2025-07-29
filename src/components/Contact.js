@@ -37,11 +37,11 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <FiGithub />, href: '#', label: 'GitHub' },
-    { icon: <FiLinkedin />, href: '#', label: 'LinkedIn' },
-    { icon: <FiTwitter />, href: '#', label: 'Twitter' },
-    { icon: <FiInstagram />, href: '#', label: 'Instagram' },
-    { icon: <FiGlobe />, href: '#', label: 'Website' }
+    { icon: <FiGithub />, href: 'https://github.com/niks2411', label: 'GitHub' },
+    { icon: <FiLinkedin />, href: 'https://www.linkedin.com/in/nikhil-mendiratta-20a2b7297/', label: 'LinkedIn' },
+    // { icon: <FiTwitter />, href: '#', label: 'Twitter' },
+    // { icon: <FiInstagram />, href: '#', label: 'Instagram' },
+    // { icon: <FiGlobe />, href: '#', label: 'Website' }
   ];
 
   const handleInputChange = (e) => {
@@ -68,8 +68,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-slate-50 dark:bg-slate-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="section-padding bg-slate-800 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,11 +83,11 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="gradient-text">Touch</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+            Get In <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Touch</span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto rounded-full mb-6 sm:mb-8"></div>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full mb-6 sm:mb-8"></div>
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
             Let's discuss your project and bring your ideas to life. I'm always open to new opportunities and collaborations.
           </p>
         </motion.div>

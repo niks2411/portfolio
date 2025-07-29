@@ -73,8 +73,14 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="section-padding bg-slate-50 dark:bg-slate-800">
-      <div className="container-custom">
+    <section id="education" className="section-padding bg-slate-800 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,11 +88,11 @@ const Education = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Education</span> & Certifications
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Education</span> & Certifications
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-700 mx-auto rounded-full mb-8"></div>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full mb-8"></div>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
             My academic journey and professional certifications that shape my expertise.
           </p>
         </motion.div>
