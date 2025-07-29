@@ -18,7 +18,7 @@ const Projects = () => {
       technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
       category: 'frontend',
       github: 'https://github.com/niks2411/portfolio',
-      live: 'https://portfolio-ruddy-two-93.vercel.app/',
+      live: 'https://nikhilmendiratta.vercel.app/',
       featured: false
     },
    
