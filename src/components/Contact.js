@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FiMail, FiPhone, FiMapPin, FiSend, FiUser, FiMessageCircle,
-  FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiGlobe
-} from 'react-icons/fi';
+  FiGithub, FiLinkedin} from 'react-icons/fi';
 import LoadingSpinner from './LoadingSpinner';
 
 const Contact = () => {
