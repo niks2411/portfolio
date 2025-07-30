@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  FiCode, FiDatabase, FiServer, FiGitBranch,
-  FiLayout
-} from 'react-icons/fi';
+// import { 
+//   FiCode, FiDatabase, FiServer, FiGitBranch,
+//   FiLayout
+// } from 'react-icons/fi';
 
 const Skills = () => {
   const skills = [
@@ -18,13 +18,13 @@ const Skills = () => {
     { name: 'Tailwind CSS', level: 90, category: 'Frontend' }
   ];
 
-  const categories = [
-    { name: 'Frontend', icon: <FiLayout />, color: 'from-blue-500 to-blue-600' },
-    { name: 'Backend', icon: <FiServer />, color: 'from-green-500 to-green-600' },
-    { name: 'Database', icon: <FiDatabase />, color: 'from-purple-500 to-purple-600' },
-    { name: 'Languages', icon: <FiCode />, color: 'from-orange-500 to-orange-600' },
-    { name: 'Tools', icon: <FiGitBranch />, color: 'from-red-500 to-red-600' }
-  ];
+  // const categories = [
+  //   { name: 'Frontend', icon: <FiLayout />, color: 'from-blue-500 to-blue-600' },
+  //   { name: 'Backend', icon: <FiServer />, color: 'from-green-500 to-green-600' },
+  //   { name: 'Database', icon: <FiDatabase />, color: 'from-purple-500 to-purple-600' },
+  //   { name: 'Languages', icon: <FiCode />, color: 'from-orange-500 to-orange-600' },
+  //   { name: 'Tools', icon: <FiGitBranch />, color: 'from-red-500 to-red-600' }
+  // ];
 
   const additionalSkills = [
     'Bootstrap', 'Tableau', 'Python', 'Firebase', 'REST APIs', 'JWT'
@@ -75,7 +75,7 @@ const Skills = () => {
         </div>
 
         {/* Categories */}
-        <div className="mb-12 sm:mb-16">
+        {/* <div className="mb-12 sm:mb-16">
           <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-white">
             Skill Categories
           </h3>
@@ -94,7 +94,7 @@ const Skills = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Additional Skills */}
         <div className="text-center">
