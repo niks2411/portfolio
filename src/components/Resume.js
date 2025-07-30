@@ -7,10 +7,12 @@ const Resume = () => {
     // TODO: Replace with your actual resume file
     // For now, this is a placeholder - you can add your resume file to the public folder
     // and update this function to download it
-    const link = document.createElement("a");
-    link.href = "/Nikhil_Mendiratta_Resume.pdf"; // must match file name
-    link.download = "Nikhil_Mendiratta_Resume.pdf";
-    link.click();
+   const link = document.createElement("a");
+  link.href = "/Nikhil_mendiratta_resume.pdf";
+  link.download = "Nikhil_mendiratta_resume.pdf";
+  document.body.appendChild(link); // Append to DOM
+  link.click();
+  document.body.removeChild(link);
     // Example implementation:
     // const link = document.createElement('a');
     // link.href = '/resume.pdf'; // Add your resume file to public folder
@@ -23,7 +25,7 @@ const Resume = () => {
   };
 
   const handlePreview = () => {
-    window.open("/Nikhil_Mendiratta_Resume.pdf", "_blank");
+     window.open("/Nikhil_mendiratta_resume.pdf", "_blank");
   };
 
 
