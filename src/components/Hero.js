@@ -17,7 +17,7 @@ const MailIcon = () => (
 
 const SparkleIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 0l1.09 3.09L16 2l-1.09 3.09L18 6l-3.09 1.09L16 10l-3.09-1.09L12 12l-1.09-3.09L8 10l1.09-3.09L6 6l3.09-1.09L8 2l3.09 1.09L12 0z"/>
+    <path d="M12 0l1.09 3.09L16 2l-1.09 3.09L18 6l-3.09 1.09L16 10l-3.09-1.09L12 12l-1.09-3.09L8 10l1.09-3.09L6 6l3.09-1.09L8 2l3.09 1.09L12 0z" />
   </svg>
 );
 
@@ -98,7 +98,7 @@ const Hero = () => {
   useEffect(() => {
     setIsLoaded(true);
     const handleMouseMove = (e) => {
-      setMousePosition({ 
+      setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100
       });
@@ -118,13 +118,13 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
       {/* Dark Animated Background */}
-      <div 
+      <div
         className="absolute inset-0 opacity-30"
         style={{
           background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)`
         }}
       />
-      
+
       <ParticleSystem />
       <AnimatedLines />
 
@@ -179,7 +179,7 @@ const Hero = () => {
                 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-200"
               >
                 I'm a{' '}
-                <TypeWriter 
+                <TypeWriter
                   texts={['Web Developer', 'Full Stack Developer', 'Problem Solver', 'Creative Thinker']}
                   speed={100}
                   delay={2000}
@@ -193,7 +193,7 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 1.0 }}
                 className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               >
-                Passionate about creating innovative web solutions and turning ideas into reality through code. 
+                Passionate about creating innovative web solutions and turning ideas into reality through code.
                 Specialized in modern web technologies and user-centric design.
               </motion.p>
 
@@ -204,17 +204,20 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 1.2 }}
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
               >
-                <motion.button
+                <motion.a
+                  href="/Nikhil_mendiratta_resume.pdf"
+                  download
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
+                  className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base inline-flex items-center justify-center"
                 >
                   <span className="relative z-10 flex items-center justify-center space-x-2">
                     <DownloadIcon />
                     <span>Download My Resume</span>
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </motion.button>
+                </motion.a>
+
 
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}

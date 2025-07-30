@@ -29,8 +29,8 @@ const Projects = () => {
       image: 'https://media.istockphoto.com/id/1183038884/photo/view-of-a-row-of-treadmills-in-a-gym-with-people.jpg?s=612x612&w=0&k=20&c=VnTSyKHKl-YFOmpFqW_hNyIlis0sFksfcR9Ei3-r29s=',
       technologies: ['React', 'Firebase', 'Tailwind CSS', 'Framer Motion','MERN'],
       category: 'fullstack',
-      github: 'https://github.com/niks2411/leofit',
-      live: 'www.leofit.vercel.app',
+      github: '#',
+      live: 'https://gym-project-ochre-six.vercel.app/',
       featured: true
     },
     

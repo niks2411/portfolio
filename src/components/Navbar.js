@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', path: '/', section: 'home' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/', section: 'contact' }
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#contact' }
   ];
 
   useEffect(() => {
@@ -23,13 +21,10 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (section) => {
-    if (location.pathname === '/' && section) {
-      // If we're already on home page, scroll to section
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+  const scrollToSection = (href) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMobileMenuOpen(false);
   };
@@ -53,42 +48,28 @@ const Navbar = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center space-x-2"
           >
-            <Link 
-              to="/" 
-              className="flex items-center space-x-2 no-underline"
-              onClick={() => handleNavigation('home')}
-            >
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-lg">
-                NM
-              </div>
-              <span className="text-lg sm:text-xl font-bold text-white">
-                Nikhil Mendiratta
-              </span>
-            </Link>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-lg">
+              NM
+            </div>
+            <span className="text-lg sm:text-xl font-bold text-white">
+              Nikhil Mendiratta
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, index) => (
-              <motion.div
+              <motion.button
                 key={link.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -2 }}
+                onClick={() => scrollToSection(link.href)}
+                className="text-sm sm:text-base font-medium text-slate-300 hover:text-purple-400 transition-colors duration-300"
               >
-                <Link
-                  to={link.path}
-                  onClick={() => handleNavigation(link.section)}
-                  className={`text-sm sm:text-base font-medium ${
-                    location.pathname === link.path && !link.section
-                      ? 'text-purple-400'
-                      : 'text-slate-300 hover:text-purple-400'
-                  } transition-colors duration-300 no-underline`}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+                {link.name}
+              </motion.button>
             ))}
           </div>
 
@@ -114,24 +95,16 @@ const Navbar = () => {
         >
           <div className="py-4 space-y-2">
             {navLinks.map((link, index) => (
-              <motion.div
+              <motion.button
                 key={link.name}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
+                onClick={() => scrollToSection(link.href)}
+                className="w-full text-left px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-purple-400 transition-colors duration-300"
               >
-                <Link
-                  to={link.path}
-                  onClick={() => handleNavigation(link.section)}
-                  className={`w-full text-left px-4 py-3 text-sm font-medium ${
-                    location.pathname === link.path && !link.section
-                      ? 'text-purple-400'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-purple-400'
-                  } transition-colors duration-300 block`}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+                {link.name}
+              </motion.button>
             ))}
           </div>
         </motion.div>
@@ -140,4 +113,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; 

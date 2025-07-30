@@ -1,19 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const location = useLocation();
-
-  const scrollToSection = (sectionId) => {
-    if (location.pathname === '/') {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
 
   return (
     <footer className="bg-slate-900 text-white py-8 sm:py-12">
@@ -27,19 +16,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="flex items-center space-x-3 mb-4 sm:mb-0"
           >
-            <Link 
-              to="/" 
-              className="flex items-center space-x-3"
-              onClick={() => scrollToSection('home')}
-            >
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-lg">
-                NM
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold">Nikhil Mendiratta</h3>
-                <p className="text-xs sm:text-sm text-slate-400">Web Developer</p>
-              </div>
-            </Link>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-lg">
+              NM
+            </div>
+            <div>
+              <h3 className="text-lg sm:text-xl font-bold">Nikhil Mendiratta</h3>
+              <p className="text-xs sm:text-sm text-slate-400">Web Developer</p>
+            </div>
           </motion.div>
 
           {/* Copyright */}
@@ -83,26 +66,24 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-4 sm:space-x-6">
-            <Link
-              to="/"
-              onClick={() => scrollToSection('contact')}
+            <a
+              href="#contact"
               className="text-sm sm:text-base text-slate-400 hover:text-primary-400 transition-colors duration-300"
             >
               Contact
-            </Link>
-            <Link
-              to="/about"
+            </a>
+            <a
+              href="#about"
               className="text-sm sm:text-base text-slate-400 hover:text-primary-400 transition-colors duration-300"
             >
               About
-            </Link>
-            <Link
-              to="/"
-              onClick={() => scrollToSection('projects')}
+            </a>
+            <a
+              href="#projects"
               className="text-sm sm:text-base text-slate-400 hover:text-primary-400 transition-colors duration-300"
             >
               Projects
-            </Link>
+            </a>
           </div>
         </motion.div>
       </div>
