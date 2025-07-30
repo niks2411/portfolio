@@ -7,7 +7,10 @@ const Resume = () => {
     // TODO: Replace with your actual resume file
     // For now, this is a placeholder - you can add your resume file to the public folder
     // and update this function to download it
-    
+    const link = document.createElement("a");
+    link.href = "/Nikhil_Mendiratta_Resume.pdf"; // must match file name
+    link.download = "Nikhil_Mendiratta_Resume.pdf";
+    link.click();
     // Example implementation:
     // const link = document.createElement('a');
     // link.href = '/resume.pdf'; // Add your resume file to public folder
@@ -15,14 +18,14 @@ const Resume = () => {
     // document.body.appendChild(link);
     // link.click();
     // document.body.removeChild(link);
-    
-    alert('Resume download functionality ready! Add your resume file to the public folder and update this function.');
+
+    // alert('Resume download functionality ready! Add your resume file to the public folder and update this function.');
   };
 
   const handlePreview = () => {
-    // Placeholder for resume preview functionality
-    alert('Resume preview functionality would be implemented here');
+    window.open("/Nikhil_Mendiratta_Resume.pdf", "_blank");
   };
+
 
   const resumeSections = [
     {
@@ -62,7 +65,7 @@ const Resume = () => {
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl"></div>
       </div>
-      
+
       <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,7 +104,7 @@ const Resume = () => {
                     <p className="text-primary-100">Web Developer & Data Analyst</p>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center space-x-2">
                     <FiMail size={16} />
@@ -128,7 +131,7 @@ const Resume = () => {
                       </div>
                       {section.title}
                     </h4>
-                    
+
                     <div className="space-y-4">
                       {section.items.map((item, itemIndex) => (
                         <div key={itemIndex} className="border-l-4 border-primary-500 pl-4">
@@ -188,7 +191,8 @@ const Resume = () => {
                   <FiDownload size={20} />
                   <span>Download PDF</span>
                 </motion.button>
-                
+
+
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -198,6 +202,7 @@ const Resume = () => {
                   <FiEye size={20} />
                   <span>Preview</span>
                 </motion.button>
+
               </div>
             </div>
 
@@ -216,7 +221,7 @@ const Resume = () => {
                     <div className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full" style={{ width: '90%' }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-slate-600 dark:text-slate-400">Backend</span>
@@ -226,7 +231,7 @@ const Resume = () => {
                     <div className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-slate-600 dark:text-slate-400">Database</span>
@@ -236,7 +241,7 @@ const Resume = () => {
                     <div className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full" style={{ width: '80%' }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-slate-600 dark:text-slate-400">Data Analysis</span>
