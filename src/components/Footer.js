@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FiUser } from 'react-icons/fi';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -72,12 +74,12 @@ const Footer = () => {
             >
               Contact
             </a>
-            <a
-              href="#about"
-              className="text-sm sm:text-base text-slate-400 hover:text-primary-400 transition-colors duration-300"
+            <Link
+              to="/about"
+              className="text-sm sm:text-base flex items-center gap-1 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent font-semibold hover:from-pink-500 hover:to-purple-500 transition-colors duration-300"
             >
-              About
-            </a>
+              <FiUser className="inline-block mb-0.5" /> About
+            </Link>
             <a
               href="#projects"
               className="text-sm sm:text-base text-slate-400 hover:text-primary-400 transition-colors duration-300"
