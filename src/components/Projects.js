@@ -29,8 +29,8 @@ const Projects = () => {
       image: 'https://media.istockphoto.com/id/1183038884/photo/view-of-a-row-of-treadmills-in-a-gym-with-people.jpg?s=612x612&w=0&k=20&c=VnTSyKHKl-YFOmpFqW_hNyIlis0sFksfcR9Ei3-r29s=',
       technologies: ['React', 'Firebase', 'Tailwind CSS', 'Framer Motion','MERN'],
       category: 'fullstack',
-      github: '#',
-      live: 'https://gym-project-ochre-six.vercel.app/',
+      github: 'https://github.com/niks2411/leofit',
+      live: 'https://leofit.vercel.app/',
       featured: true
     },
     
@@ -42,7 +42,7 @@ const Projects = () => {
       technologies: ['Node.js', 'Express', 'MongoDB', 'React','Tailwind'],
       category: 'fullstack',
       github: 'https://github.com/niks2411/diet-website',
-      live: 'www.thediet4u.com',
+      live: 'https://www.thediet4u.com/',
       featured: false
     }, {
       id: 3,
@@ -226,7 +226,7 @@ const Projects = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
-              href="https://github.com"
+              href="https://github.com/niks2411"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
