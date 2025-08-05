@@ -89,7 +89,7 @@ const Education = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Education</span> & Certifications
+             Education & Certifications
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full mb-8"></div>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">

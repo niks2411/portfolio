@@ -168,7 +168,7 @@ const Hero = () => {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white"
               >
                 Hi, I'm{' '}
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Nikhil</span>
+                Nikhil
               </motion.h1>
 
               {/* Typewriter Effect */}
