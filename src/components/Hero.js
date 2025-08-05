@@ -252,7 +252,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 1.4 }}
@@ -264,7 +264,7 @@ const Hero = () => {
               <div className="w-1 h-2 sm:h-3 bg-slate-400 rounded-full mt-1 sm:mt-2 animate-pulse-gentle"></div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       <style jsx>{`
