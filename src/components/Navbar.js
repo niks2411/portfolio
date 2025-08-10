@@ -11,7 +11,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#projects' },
+    // { name: 'Skills', href: '#skills' },
+    // { name: 'About', href: '#about' },
+    // { name: 'Resume', href: '#resume' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -64,7 +67,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link, index) => (
               <motion.button
                 key={link.name}
@@ -73,7 +76,7 @@ const Navbar = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(link.href)}
-                className={`text-sm sm:text-base font-medium transition-colors duration-300 ${
+                className={`text-sm font-medium transition-colors duration-300 ${
                   isDarkMode 
                     ? 'text-slate-300 hover:text-purple-400' 
                     : 'text-slate-600 hover:text-purple-600'
@@ -86,7 +89,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-2">
             <ThemeToggle />
             <motion.button
               whileTap={{ scale: 0.9 }}
@@ -110,19 +113,19 @@ const Navbar = () => {
             height: isMobileMenuOpen ? 'auto' : 0
           }}
           transition={{ duration: 0.3 }}
-          className={`md:hidden overflow-hidden rounded-lg shadow-lg mt-2 transition-colors duration-300 ${
+          className={`lg:hidden overflow-hidden rounded-lg shadow-lg mt-2 transition-colors duration-300 ${
             isDarkMode ? 'bg-slate-900' : 'bg-white'
           }`}
         >
-          <div className="py-4 space-y-2">
+          <div className="py-4 space-y-1">
             {navLinks.map((link, index) => (
               <motion.button
                 key={link.name}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 onClick={() => scrollToSection(link.href)}
-                className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-300 ${
+                className={`w-full text-left px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg mx-2 ${
                   isDarkMode 
                     ? 'text-slate-300 hover:bg-slate-800 hover:text-purple-400' 
                     : 'text-slate-600 hover:bg-gray-100 hover:text-purple-600'
