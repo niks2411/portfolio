@@ -4,23 +4,15 @@ import {
   FiGithub, FiExternalLink, FiCode, FiDatabase, 
   FiSmartphone, FiZap 
 } from 'react-icons/fi';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const { isDarkMode } = useTheme();
 
   // Selected projects only (1st, 2nd, 4th, 5th)
   const allProjects = [
-    {
-      id: 1,
-      title: 'Portfolio Website',
-      description: 'A modern, responsive portfolio website built with React and Tailwind CSS, featuring smooth animations and dark mode.',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
-      technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
-      category: 'frontend',
-      github: 'https://github.com/niks2411/portfolio',
-      live: 'https://nikhilmendiratta.vercel.app/',
-      featured: false
-    },
+   
    
     {
       id: 2,
@@ -43,6 +35,16 @@ const Projects = () => {
       category: 'fullstack',
       github: 'https://github.com/niks2411/diet-website',
       live: 'https://www.thediet4u.com/',
+      featured: false
+    }, {
+      id: 1,
+      title: 'Portfolio Website',
+      description: 'A modern, responsive portfolio website built with React and Tailwind CSS, featuring smooth animations and dark mode.',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
+      technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+      category: 'frontend',
+      github: 'https://github.com/niks2411/portfolio',
+      live: 'https://nikhilmendiratta.vercel.app/',
       featured: false
     }, {
       id: 3,
@@ -69,7 +71,9 @@ const Projects = () => {
     : allProjects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="projects" className="section-padding bg-slate-900 relative overflow-hidden">
+    <section id="projects" className={`section-padding relative overflow-hidden transition-colors duration-300 ${
+      isDarkMode ? 'bg-slate-900' : 'bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50'
+    }`}>
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl"></div>
@@ -85,11 +89,15 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-colors duration-300 ${
+            isDarkMode ? 'text-white' : 'text-slate-800'
+          }`}>
             My Featured Work
           </h2>
           <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full mb-6 sm:mb-8"></div>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+          <p className={`text-base sm:text-lg max-w-2xl mx-auto transition-colors duration-300 ${
+            isDarkMode ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             Selected projects that showcase my expertise in web development and problem-solving.
           </p>
         </motion.div>
@@ -113,7 +121,9 @@ const Projects = () => {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeFilter === filter.value
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
-                  : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
+                  : isDarkMode 
+                    ? 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
+                    : 'bg-white/80 text-slate-600 hover:bg-white hover:text-slate-800 border border-gray-200 shadow-sm hover:shadow-md'
               }`}
             >
               {filter.name}
@@ -132,7 +142,11 @@ const Projects = () => {
               viewport={{ once: true }}
               className="group relative"
             >
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 h-full flex flex-col">
+              <div className={`backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl h-full flex flex-col ${
+                isDarkMode 
+                  ? 'bg-slate-800/50 border border-slate-700/50 hover:border-purple-500/50 hover:shadow-purple-500/10'
+                  : 'bg-white/80 border border-gray-200 hover:border-purple-300 hover:shadow-purple-500/20'
+              }`}>
                 {/* Project Image */}
                 <div className="relative h-52 overflow-hidden">
                   <img
@@ -152,10 +166,16 @@ const Projects = () => {
                 {/* Project Content */}
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300">
+                    <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 ${
+                      isDarkMode 
+                        ? 'text-white group-hover:text-purple-300'
+                        : 'text-slate-800 group-hover:text-purple-600'
+                    }`}>
                       {project.title}
                     </h3>
-                    <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                    <p className={`text-sm mb-4 leading-relaxed transition-colors duration-300 ${
+                      isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                    }`}>
                       {project.description}
                     </p>
                   </div>
@@ -169,7 +189,11 @@ const Projects = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: techIndex * 0.05 }}
                         viewport={{ once: true }}
-                        className="px-2 py-1 bg-slate-700/50 text-slate-300 text-xs rounded-full border border-slate-600/50 hover:bg-slate-600/50 hover:text-white transition-colors duration-200"
+                        className={`px-2 py-1 text-xs rounded-full border transition-colors duration-200 ${
+                          isDarkMode 
+                            ? 'bg-slate-700/50 text-slate-300 border-slate-600/50 hover:bg-slate-600/50 hover:text-white'
+                            : 'bg-gray-100 text-slate-600 border-gray-200 hover:bg-gray-200 hover:text-slate-800'
+                        }`}
                       >
                         {tech}
                       </motion.span>
@@ -183,7 +207,11 @@ const Projects = () => {
                         href={project.github}
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-slate-600/50 transition-all duration-300 flex items-center"
+                        className={`p-2 rounded-lg transition-all duration-300 flex items-center ${
+                          isDarkMode 
+                            ? 'bg-slate-700/50 text-slate-300 hover:text-white hover:bg-slate-600/50'
+                            : 'bg-gray-100 text-slate-600 hover:text-slate-800 hover:bg-gray-200'
+                        }`}
                         title="View Code"
                       >
                         <FiGithub size={18} className="mr-1" />
@@ -195,14 +223,20 @@ const Projects = () => {
                           rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 bg-slate-700/50 rounded-lg text-slate-300 hover:text-white hover:bg-slate-600/50 transition-all duration-300 flex items-center"
+                        className={`p-2 rounded-lg transition-all duration-300 flex items-center ${
+                          isDarkMode 
+                            ? 'bg-slate-700/50 text-slate-300 hover:text-white hover:bg-slate-600/50'
+                            : 'bg-gray-100 text-slate-600 hover:text-slate-800 hover:bg-gray-200'
+                        }`}
                         title="Live Demo"
                       >
                         <FiExternalLink size={18} className="mr-1" />
                         <span className="text-xs">Demo</span>
                       </motion.a>
                     </div>
-                    <div className="text-slate-400 text-xs flex items-center">
+                    <div className={`text-xs flex items-center transition-colors duration-300 ${
+                      isDarkMode ? 'text-slate-400' : 'text-slate-500'
+                    }`}>
                       {project.category === 'fullstack' && <FiCode className="mr-1" size={14} />}
                       {project.category === 'frontend' && <FiSmartphone className="mr-1" size={14} />}
                       {project.category === 'backend' && <FiDatabase className="mr-1" size={14} />}
@@ -223,7 +257,9 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mt-12 sm:mt-16"
         >
-          <p className="text-slate-300 mb-6">
+          <p className={`mb-6 transition-colors duration-300 ${
+            isDarkMode ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             Want to see more? Check out my GitHub or let's discuss your project!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -233,7 +269,11 @@ const Projects = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center space-x-2 bg-slate-800 text-white font-semibold py-3 px-6 rounded-xl border border-slate-700 hover:bg-slate-700 shadow-lg hover:shadow-xl transition-all duration-300"
+              className={`inline-flex items-center justify-center space-x-2 font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-slate-800 text-white border border-slate-700 hover:bg-slate-700'
+                  : 'bg-white text-slate-800 border border-gray-200 hover:bg-gray-50'
+              }`}
             >
               <FiGithub size={20} />
               <span>View All Projects</span>

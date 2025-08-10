@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Custom SVG Icons
 const DownloadIcon = () => (
@@ -94,6 +95,7 @@ const AnimatedLines = () => {
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     setIsLoaded(true);
@@ -116,7 +118,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+    <section id="home" className={`relative min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-gradient-to-br from-black via-gray-900 to-black' 
+        : 'bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100'
+    }`}>
       {/* Dark Animated Background */}
       <div
         className="absolute inset-0 opacity-30"
@@ -154,7 +160,9 @@ const Hero = () => {
                 className="flex items-center justify-center lg:justify-start space-x-2"
               >
                 <SparkleIcon className="text-purple-400 animate-pulse-gentle" />
-                <span className="text-base sm:text-lg text-slate-300 font-medium">
+                <span className={`text-base sm:text-lg font-medium transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   Welcome to my portfolio
                 </span>
                 <SparkleIcon className="text-purple-400 animate-pulse-gentle" />
@@ -165,7 +173,9 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white"
+                className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight transition-colors duration-300 ${
+                  isDarkMode ? 'text-white' : 'text-slate-800'
+                }`}
               >
                 Hi, I'm{' '}
                 Nikhil
@@ -176,7 +186,9 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-200"
+                className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-200' : 'text-slate-700'
+                }`}
               >
                 I'm a{' '}
                 <TypeWriter
@@ -191,7 +203,9 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                 transition={{ duration: 0.6, delay: 1.0 }}
-                className="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                className={`text-base sm:text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-600'
+                }`}
               >
                 Passionate about creating innovative web solutions and turning ideas into reality through code.
                 Specialized in modern web technologies and user-centric design.

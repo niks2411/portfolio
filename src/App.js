@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,21 +14,23 @@ import ScrollIndicator from './components/ScrollIndicator';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-pink-900/20">
-      <ScrollIndicator />
-      <Navbar />
-      <main>
-        <Hero />
-        <Projects />
-        <Skills />
-        {/* <Education /> */}
-        {/* <Services /> */}
-        <About />
-        <Resume />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen transition-colors duration-300 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 dark:from-slate-900 dark:via-purple-900/20 dark:to-pink-900/20">
+        <ScrollIndicator />
+        <Navbar />
+        <main>
+          <Hero />
+          <Projects />
+          <Skills />
+          {/* <Education /> */}
+          {/* <Services /> */}
+          <About />
+          <Resume />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

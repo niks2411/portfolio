@@ -4,8 +4,10 @@ import {
   FiMail, FiPhone, FiMapPin, FiSend, FiUser, FiMessageCircle,
   FiGithub, FiLinkedin} from 'react-icons/fi';
 import LoadingSpinner from './LoadingSpinner';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Contact = () => {
+  const { isDarkMode } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -67,7 +69,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-slate-800 relative overflow-hidden">
+    <section id="contact" className={`section-padding relative overflow-hidden transition-colors duration-300 ${
+      isDarkMode ? 'bg-slate-800' : 'bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50'
+    }`}>
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl"></div>
@@ -82,11 +86,15 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 transition-colors duration-300 ${
+            isDarkMode ? 'text-white' : 'text-slate-800'
+          }`}>
             Get In Touch
           </h2>
           <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full mb-6 sm:mb-8"></div>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+          <p className={`text-base sm:text-lg max-w-2xl mx-auto transition-colors duration-300 ${
+            isDarkMode ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             Let's discuss your project and bring your ideas to life. I'm always open to new opportunities and collaborations.
           </p>
         </motion.div>
@@ -98,15 +106,21 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-slate-700 rounded-xl p-6 sm:p-8 shadow-lg"
+            className={`rounded-xl p-6 sm:p-8 shadow-lg transition-colors duration-300 ${
+              isDarkMode ? 'bg-slate-700' : 'bg-white'
+            }`}
           >
-            <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-slate-800 dark:text-slate-200">
+            <h3 className={`text-2xl sm:text-3xl font-bold mb-6 transition-colors duration-300 ${
+              isDarkMode ? 'text-slate-200' : 'text-slate-800'
+            }`}>
               Send Message
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm sm:text-base font-medium text-slate-700 dark:text-slate-300 mb-2">
+                <label htmlFor="name" className={`block text-sm sm:text-base font-medium mb-2 transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                }`}>
                   Name
                 </label>
                 <div className="relative">
@@ -118,14 +132,20 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm sm:text-base"
+                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base transition-colors duration-300 ${
+                      isDarkMode 
+                        ? 'border-slate-600 bg-slate-800 text-slate-100'
+                        : 'border-slate-300 bg-white text-slate-900'
+                    }`}
                     placeholder="Your name"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm sm:text-base font-medium text-slate-700 dark:text-slate-300 mb-2">
+                <label htmlFor="email" className={`block text-sm sm:text-base font-medium mb-2 transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                }`}>
                   Email
                 </label>
                 <div className="relative">
@@ -137,14 +157,20 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm sm:text-base"
+                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base transition-colors duration-300 ${
+                      isDarkMode 
+                        ? 'border-slate-600 bg-slate-800 text-slate-100'
+                        : 'border-slate-300 bg-white text-slate-900'
+                    }`}
                     placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm sm:text-base font-medium text-slate-700 dark:text-slate-300 mb-2">
+                <label htmlFor="message" className={`block text-sm sm:text-base font-medium mb-2 transition-colors duration-300 ${
+                  isDarkMode ? 'text-slate-300' : 'text-slate-700'
+                }`}>
                   Message
                 </label>
                 <div className="relative">
@@ -156,7 +182,11 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm sm:text-base resize-none"
+                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base resize-none transition-colors duration-300 ${
+                      isDarkMode 
+                        ? 'border-slate-600 bg-slate-800 text-slate-100'
+                        : 'border-slate-300 bg-white text-slate-900'
+                    }`}
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -186,7 +216,9 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-green-600 dark:text-green-400 text-sm sm:text-base text-center"
+                  className={`text-sm sm:text-base text-center transition-colors duration-300 ${
+                    isDarkMode ? 'text-green-400' : 'text-green-600'
+                  }`}
                 >
                   Message sent successfully! I'll get back to you soon.
                 </motion.div>
@@ -203,7 +235,9 @@ const Contact = () => {
             className="space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-slate-800 dark:text-slate-200">
+              <h3 className={`text-2xl sm:text-3xl font-bold mb-6 transition-colors duration-300 ${
+                isDarkMode ? 'text-slate-200' : 'text-slate-800'
+              }`}>
                 Contact Information
               </h3>
               <div className="space-y-4 sm:space-y-6">
@@ -215,16 +249,22 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 * index }}
                     viewport={{ once: true }}
-                    className="flex items-center space-x-4 p-4 sm:p-6 bg-white dark:bg-slate-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    className={`flex items-center space-x-4 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
+                      isDarkMode ? 'bg-slate-700' : 'bg-white'
+                    }`}
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white">
                       {info.icon}
                     </div>
                     <div>
-                      <h4 className="text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-200">
+                      <h4 className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${
+                        isDarkMode ? 'text-slate-200' : 'text-slate-800'
+                      }`}>
                         {info.title}
                       </h4>
-                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                      <p className={`text-sm sm:text-base transition-colors duration-300 ${
+                        isDarkMode ? 'text-slate-400' : 'text-slate-600'
+                      }`}>
                         {info.value}
                       </p>
                     </div>
@@ -235,7 +275,9 @@ const Contact = () => {
 
             {/* Social Links */}
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-slate-800 dark:text-slate-200">
+              <h3 className={`text-xl sm:text-2xl font-bold mb-4 sm:mb-6 transition-colors duration-300 ${
+                isDarkMode ? 'text-slate-200' : 'text-slate-800'
+              }`}>
                 Follow Me
               </h3>
               <div className="flex space-x-3 sm:space-x-4">

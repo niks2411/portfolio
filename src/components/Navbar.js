@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isDarkMode } = useTheme();
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -36,7 +39,9 @@ const Navbar = () => {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-slate-900/90 backdrop-blur-md shadow-lg' 
+          ? isDarkMode 
+            ? 'bg-slate-900/90 backdrop-blur-md shadow-lg' 
+            : 'bg-white/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -48,10 +53,12 @@ const Navbar = () => {
             whileTap={{ scale: 0.95 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-lg">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-lg">
               NM
             </div>
-            <span className="text-lg sm:text-xl font-bold text-white">
+            <span className={`text-lg sm:text-xl font-bold transition-colors duration-300 ${
+              isDarkMode ? 'text-white' : 'text-slate-800'
+            }`}>
               Nikhil Mendiratta
             </span>
           </motion.div>
@@ -66,21 +73,33 @@ const Navbar = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(link.href)}
-                className="text-sm sm:text-base font-medium text-slate-300 hover:text-purple-400 transition-colors duration-300"
+                className={`text-sm sm:text-base font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:text-purple-400' 
+                    : 'text-slate-600 hover:text-purple-600'
+                }`}
               >
                 {link.name}
               </motion.button>
             ))}
+            <ThemeToggle className="ml-4" />
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800 transition-colors duration-300"
-          >
-            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </motion.button>
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 rounded-lg transition-colors duration-300 ${
+                isDarkMode 
+                  ? 'text-slate-300 hover:bg-slate-800' 
+                  : 'text-slate-600 hover:bg-gray-100'
+              }`}
+            >
+              {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -91,7 +110,9 @@ const Navbar = () => {
             height: isMobileMenuOpen ? 'auto' : 0
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden bg-slate-900 rounded-lg shadow-lg mt-2"
+          className={`md:hidden overflow-hidden rounded-lg shadow-lg mt-2 transition-colors duration-300 ${
+            isDarkMode ? 'bg-slate-900' : 'bg-white'
+          }`}
         >
           <div className="py-4 space-y-2">
             {navLinks.map((link, index) => (
@@ -101,7 +122,11 @@ const Navbar = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 onClick={() => scrollToSection(link.href)}
-                className="w-full text-left px-4 py-3 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-purple-400 transition-colors duration-300"
+                className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-300 ${
+                  isDarkMode 
+                    ? 'text-slate-300 hover:bg-slate-800 hover:text-purple-400' 
+                    : 'text-slate-600 hover:bg-gray-100 hover:text-purple-600'
+                }`}
               >
                 {link.name}
               </motion.button>
